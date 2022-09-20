@@ -1,7 +1,7 @@
 Implementation of RAI-Choo!
 ===========================
 
-This repository contains a prototypical implementation of the RAI-Choo! blind signature scheme.
+This repository contains a prototypical implementation of the Rai-Choo! blind signature scheme.
 
 
 ## Dependencies
@@ -24,11 +24,10 @@ You can install it using
 ## Building
 Run 
 	
-	make
+	cd build
+	make all
 
-
-## Usage
-
+Then, there should be an executable file `Raichoo` in this directory.
 
 
 ## Licence
