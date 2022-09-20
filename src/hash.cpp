@@ -74,12 +74,12 @@ void hash_cc(const unsigned char *com, G1 *c, uint32_t L, uint32_t *J) {
 
 void hash_bls(const unsigned char *mu, const unsigned char *info, G1 &hash) {
 
-//concat a tag, mu and info
+	//concat a tag, mu and info
 	size_t hashinput_len = 4 + SECPAR + SECPAR;
 	unsigned char hashinput[hashinput_len] = "BLSH";
 	memcpy(&hashinput[4], mu, SECPAR);
 	memcpy(&hashinput[4 + SECPAR], info, SECPAR);
 
-//hash using MCL
+	//hash using MCL
 	hashAndMapToG1(hash, hashinput, hashinput_len);
 }

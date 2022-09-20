@@ -49,11 +49,11 @@ bool inline sanity_check(const context *ctx, const unsigned char *info,
 		}
 	}
 
-//re-hash to get J
+	//re-hash to get J
 	uint32_t J[PAR_K];
 	hash_cc(com, c, 1, J);
 
-//check if J is equal to the J that the user sent
+	//check if J is equal to the J that the user sent
 	for (int i = 0; i < PAR_K; ++i) {
 		if (J[i] != chall->J[i]) {
 			return false;
@@ -64,12 +64,12 @@ bool inline sanity_check(const context *ctx, const unsigned char *info,
 
 bool signer(const context *ctx, const publickey *pk, const secretkey *sk,
 		const unsigned char *info, const challenge *chall, response *resp) {
-// Verify the challenge
+	// Verify the challenge
 	if (!sanity_check(ctx, info, chall)) {
 		return false;
 	}
 
-// Sample a random key sharing
+	// Sample a random key sharing
 	Fr sk_sharing[PAR_K];
 	Fr sum;
 	sk_sharing[0].setRand();
@@ -85,7 +85,7 @@ bool signer(const context *ctx, const publickey *pk, const secretkey *sk,
 	Fr::neg(sum, sum);
 	Fr::add(sk_sharing[PAR_K - 1], sk->sk, sum);
 
-// Compute the aggregated response
+	// Compute the aggregated response
 	G1::mulVec(resp->agg_resp, chall->c, sk_sharing, PAR_K);
 	return true;
 }

@@ -7,7 +7,7 @@ This repository contains a prototypical implementation of the Rai-Choo! blind si
 ## Dependencies
 
 Before compilation, install the `mcl` dependency.
-A simple way to to that is to clone the `mcl` repository via
+A simple way to do that is to clone the `mcl` repository via
 
 	git clone https://github.com/alinush/go-mcl.git
 

@@ -102,7 +102,7 @@ void user_challenge(const context *ctx, const publickey *pk,
 bool user_finalize(user_state *state, challenge *chall, response *resp,
 		signature &sig) {
 
-// Step 1: Recompute final component pk_K of the sharing
+	// Step 1: Recompute final component pk_K of the sharing
 	G1 pk_sharing_G1[PAR_K];
 	G2 pk_sharing_G2[PAR_K + 1]; //one more element to make Step 3 efficient
 	G1 sum_G1;
@@ -122,7 +122,7 @@ bool user_finalize(user_state *state, challenge *chall, response *resp,
 	G2::neg(sum_G2, sum_G2);
 	G2::add(pk_sharing_G2[PAR_K - 1], state->pk->pk2, sum_G2);
 
-// Step 2: Check validity of the sharing
+	// Step 2: Check validity of the sharing
 	bool consistent = true;
 	GT tmp;
 	G1 left[2];
@@ -141,7 +141,7 @@ bool user_finalize(user_state *state, challenge *chall, response *resp,
 		return false;
 	}
 
-// Step 3: Check correctness of the aggregated response
+	// Step 3: Check correctness of the aggregated response
 	G1 cs_and_add_resp[PAR_K + 1];
 	G1::neg(cs_and_add_resp[PAR_K], resp->agg_resp);
 	pk_sharing_G2[PAR_K] = state->ctx->g2;
@@ -154,7 +154,7 @@ bool user_finalize(user_state *state, challenge *chall, response *resp,
 		return false;
 	}
 
-// Step 4: Unblind the aggregated response
+	// Step 4: Unblind the aggregated response
 	G1 agg_sig;
 	G1 shift;
 	Fr neg_alphas[PAR_K];
@@ -165,7 +165,7 @@ bool user_finalize(user_state *state, challenge *chall, response *resp,
 	}
 	G1::mulVec(shift, pk_sharing_G1, neg_alphas, PAR_K);
 	G1::add(agg_sig, resp->agg_resp, shift);
-// Rerandomize the key sharing
+	// Rerandomize the key sharing
 	G1 selected_mu_hashes[PAR_K];
 	for (int i = 0; i < PAR_K; ++i) {
 		int Ji = chall->J[i];
@@ -175,7 +175,7 @@ bool user_finalize(user_state *state, challenge *chall, response *resp,
 	key_rerandomization(state->ctx, resp->pk_sharing, selected_mu_hashes,
 			agg_sig, sig.pk_sharing, sig.agg_sig);
 
-// Step 5: add the commitment randomness the signature
+	// Step 5: add the commitment randomness the signature
 	for (int i = 0; i < PAR_K; ++i) {
 		int Ji = chall->J[i];
 		int idx = i * PAR_N + Ji;
