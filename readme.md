@@ -1,4 +1,4 @@
-Implementation of RAI-Choo!
+Implementation of Rai-Choo!
 ===========================
 
 This repository contains a prototypical implementation of the Rai-Choo! blind signature scheme.
