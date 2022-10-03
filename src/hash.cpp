@@ -44,7 +44,7 @@ void hash_alpha(const unsigned char *gamma, uint32_t l, Fr &alpha) {
 
 void hash_cc(const unsigned char *com, G1 *c, uint32_t L, uint32_t *J) {
 	//concat a tag, com and c
-	size_t size_G1 = 33;
+	size_t size_G1 = NUMBYTESG1ELEMENT;
 	size_t hashinput_len = 4 + PAR_K * PAR_N * SECPAR + PAR_N * PAR_K * L * size_G1;
 	unsigned char hashinput[hashinput_len] = "CC.H";
 	memcpy(&hashinput[4], com, PAR_K * PAR_N * SECPAR);

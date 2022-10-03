@@ -19,6 +19,8 @@
 #include <mcl/bls12_381.hpp>
 using namespace mcl::bn;
 
+#define NUMBYTESG1ELEMENT 48
+
 #define MEDIUM_N_PARS
 
 /*************SYSTEM*PARAMETERS**************/
