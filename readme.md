@@ -21,6 +21,9 @@ You can install it using
 
 	sudo apt-get install libssl-dev
 
+## Parameter Selection (Optional)
+If you want to use/test parameters different than the standard parameters (N=8,K=54), then go to file `src/parameters.hpp` and change the line `#define MEDIUM_N_PARS` to `#define LOW_N_PARS` (N=4,K=80) or `#define HIGH_N_PARS` (N=32,K=33).
+
 ## Building
 Run 
 	
