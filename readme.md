@@ -1,12 +1,16 @@
 Implementation of Rai-Choo!
 ===========================
 
-This repository contains a prototypical implementation of the Rai-Choo! blind signature scheme.
+This repository contains a prototypical implementation of the [Rai-Choo! blind signature scheme](https://eprint.iacr.org/2022/1350.pdf).
 
 
 ## Dependencies
+Before compilation, first ensure that the `gmp` dependency is installed.
+For that, install `libgmp3-dev` using 
 
-Before compilation, install the `mcl` dependency.
+	sudo apt-get install libgmp3-dev 
+
+Install the `mcl` dependency.
 A simple way to do that is to clone the `mcl` repository via
 
 	git clone https://github.com/alinush/go-mcl.git
